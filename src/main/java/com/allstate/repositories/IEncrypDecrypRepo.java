@@ -5,4 +5,5 @@ import com.allstate.entities.EncrypDecryp;
 import org.springframework.data.repository.CrudRepository;
 
 public interface IEncrypDecrypRepo extends CrudRepository<EncrypDecryp,Integer>{
+    public EncrypDecryp findByCarrier(String carrierName);
 }

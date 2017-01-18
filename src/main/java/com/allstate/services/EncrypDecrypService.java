@@ -51,9 +51,16 @@ public class EncrypDecrypService {
     }
 
     public EncrypDecryp encryptPassword(EncrypDecryp encryp) {
-        encryp.setAgent_name("Pankaj");
         encryp.setPassword_carrier(encrypt(encryp.getPassword_carrier()));
         encryp.setFlag(1);
         return this.repository.save(encryp);
+    }
+
+    public EncrypDecryp updatePassword(EncrypDecryp encryp){
+        EncrypDecryp encrypselect = this.repository.findByCarrier(encryp.getCarrier());
+        encrypselect.setUsername_carrier(encryp.getUsername_carrier());
+        encrypselect.setPassword_carrier(encrypt(encryp.getPassword_carrier()));
+        encrypselect.setFlag(1);
+        return this.repository.save(encrypselect);
     }
 }
